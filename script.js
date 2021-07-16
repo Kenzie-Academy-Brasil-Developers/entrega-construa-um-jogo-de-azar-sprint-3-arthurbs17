@@ -2,6 +2,7 @@ const buttonRock = document.getElementById('rock');
 const buttonPaper = document.getElementById('paper');
 const buttonScissors = document.getElementById('scissors')
 
+const buttonsJokempo = document.querySelectorAll('.jokempoButton')
 
 function playerChoice (n){
 
@@ -40,7 +41,7 @@ function rockDisplay(){
 
     if (playerChoice(buttonRock) && choiceComputer === 'tesoura'){
         console.log(choiceComputer);
-        winner = 'O Computador escolheu tesoura, Player wins!'
+        winner = 'O Computador escolheu tesoura, You win!'
     }
 
     if (playerChoice(buttonRock) && choiceComputer === 'pedra'){
@@ -64,7 +65,7 @@ function paperDisplay(){
 
     if (playerChoice(buttonPaper) && choiceComputer === 'pedra'){
         console.log(choiceComputer);
-        winner = 'O Computador escolheu pedra, Player wins!'
+        winner = 'O Computador escolheu pedra, You win!'
     }
     if (playerChoice(buttonPaper) && choiceComputer === 'tesoura'){
         console.log(choiceComputer);
@@ -86,7 +87,7 @@ function scissorsDisplay(){
 
     if (playerChoice(buttonScissors) && choiceComputer === 'papel'){
         console.log(choiceComputer);
-        winner = 'O Computador escolheu papel, Player wins!'
+        winner = 'O Computador escolheu papel, You win!'
     }
     if (playerChoice(buttonScissors) && choiceComputer === 'pedra'){
         console.log(choiceComputer);
