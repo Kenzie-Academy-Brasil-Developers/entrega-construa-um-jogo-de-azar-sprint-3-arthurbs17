@@ -13,9 +13,24 @@ var jokempoButton = document.querySelectorAll('.jokempoButton');
 var jokempoButtonArr = _toConsumableArray(jokempoButton);
 
 var displayWinner = document.getElementById('displayWinner');
+var scorePlayerDisplay = document.getElementById('scorePlayer');
+var scorePcDisplay = document.getElementById('scorePc');
+var scoreTieDisplay = document.getElementById('scoreTie');
 
 function showResults(n) {
   displayWinner.innerText = n;
+}
+
+function showScorePlayer(n) {
+  scorePlayerDisplay.innerText = n;
+}
+
+function showScorePc(n) {
+  scorePcDisplay.innerText = n;
+}
+
+function showScoreTie(n) {
+  scoreTieDisplay.innerText = n;
 }
 
 function computerChoice() {
@@ -39,12 +54,31 @@ function computerChoice() {
   return choice;
 }
 
+var scorePlayer = 0;
+var scorePc = 0;
+var scoreTie = 0;
 jokempoButtonArr.forEach(function (button) {
   button.addEventListener('click', function (e) {
     var choice = e.target.getAttribute('data-value');
     var pcChoice = computerChoice();
     var winner = '';
-    showResults(checkWinner(choice, pcChoice, winner));
+    var result = checkWinner(choice, pcChoice, winner);
+    showResults(result);
+
+    if (result === 'O Computador escolheu tesoura, You win!' || result === 'O Computador escolheu pedra, You win!' || result === 'O Computador escolheu papel, You win!') {
+      scorePlayer++;
+      showScorePlayer(scorePlayer);
+    }
+
+    if (result === 'O Computador escolheu papel, Computer wins!' || result === 'O Computador escolheu tesoura, Computer wins!' || result === 'O Computador escolheu pedra, Computer wins!') {
+      scorePc++;
+      showScorePc(scorePc);
+    }
+
+    if (result === 'O Computador também escolheu pedra, Empatou!' || result === 'O Computador também escolheu papel, Empatou!' || result === 'O Computador também escolheu tesoura, Empatou!') {
+      scoreTie++;
+      showScoreTie(scoreTie);
+    }
   });
 });
 

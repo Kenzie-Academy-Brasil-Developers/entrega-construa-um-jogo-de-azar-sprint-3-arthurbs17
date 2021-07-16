@@ -54,9 +54,16 @@ h2{
     text-align: center;
 }
 
-#winner div:nth-child(odd){
-    background-color: #8b0000;
-    color: #fff;
+#scoreBoard{
+    text-align: center;
+    border: 2px dashed #8b0000;
+    width: 200px;
+    margin: 0px auto;
+    font-size: 16px;
+}
+
+#scoreBoard h3{
+    font-size: 16px;
 }
 
 @media only screen and (min-width:769px){

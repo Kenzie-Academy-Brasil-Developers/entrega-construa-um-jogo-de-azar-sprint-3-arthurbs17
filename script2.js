@@ -1,11 +1,29 @@
 const jokempoButton = document.querySelectorAll('.jokempoButton');
 const jokempoButtonArr = [...jokempoButton];
 const displayWinner = document.getElementById('displayWinner');
+const scorePlayerDisplay = document.getElementById('scorePlayer');
+const scorePcDisplay = document.getElementById('scorePc');
+const scoreTieDisplay = document.getElementById('scoreTie')
 
 function showResults(n){
 
     displayWinner.innerText = n
     
+}
+
+function showScorePlayer(n){
+    
+    scorePlayerDisplay.innerText = n
+}
+
+function showScorePc(n){
+    
+    scorePcDisplay.innerText = n
+}
+
+function showScoreTie(n){
+    
+    scoreTieDisplay.innerText = n
 }
 
 function computerChoice (){
@@ -30,16 +48,43 @@ function computerChoice (){
     return choice
 }
 
+let scorePlayer = 0;
+let scorePc = 0;
+let scoreTie = 0;
 
 jokempoButtonArr.forEach(button => {
     
     button.addEventListener('click', function(e){
         
-    let choice = e.target.getAttribute('data-value')
-    let pcChoice = computerChoice ()
-    let winner = ''
+    let choice = e.target.getAttribute('data-value');
+    let pcChoice = computerChoice ();
+    let winner = '';
+    let result = checkWinner(choice, pcChoice, winner);
     
-    showResults(checkWinner(choice, pcChoice, winner))
+    
+    showResults(result);
+    
+    if (result === 'O Computador escolheu tesoura, You win!' || 
+    result === 'O Computador escolheu pedra, You win!' || 
+    result === 'O Computador escolheu papel, You win!'){
+        scorePlayer++
+        showScorePlayer(scorePlayer)
+    }
+
+    if (result === 'O Computador escolheu papel, Computer wins!' ||
+    result === 'O Computador escolheu tesoura, Computer wins!' ||
+    result === 'O Computador escolheu pedra, Computer wins!'){
+        scorePc++
+        showScorePc(scorePc)
+    }
+
+    if (result === 'O Computador também escolheu pedra, Empatou!'||
+    result === 'O Computador também escolheu papel, Empatou!' ||
+    result === 'O Computador também escolheu tesoura, Empatou!'){
+        scoreTie++
+        showScoreTie(scoreTie)
+    }
+    
     })
 });
 
@@ -74,5 +119,4 @@ function checkWinner(choice, pcChoice, winner){
     }
     
     return winner
-
 }
