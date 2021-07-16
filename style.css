@@ -35,7 +35,7 @@ h2{
     color: #fff;
     border: 1px solid #8b0000;
     box-shadow: 5px 5px #a9a9;
-    ;
+    transition-duration: 0.25s;
 }
 
 .jokempoButton:hover{
